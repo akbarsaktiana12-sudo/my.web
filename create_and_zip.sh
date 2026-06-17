@@ -1,3 +1,19 @@
+#!/usr/bin/env bash
+set -e
+
+ROOT_DIR="carx-operator"
+rm -rf "$ROOT_DIR"
+mkdir -p "$ROOT_DIR"
+
+# helper to write files
+write() {
+  local path="$ROOT_DIR/$1"
+  mkdir -p "$(dirname "$path")"
+  cat > "$path"
+}
+
+# README.md
+write "README.md" <<'EOF'
 ## carx-operator (Next.js) - Railway deploy guide
 
 Overview
@@ -53,6 +69,3 @@ Notes
 
 Zip helper
 Run this to create a zip of current directory:
-```
-zip -r carx-operator.zip . -x node_modules/\* .git/\*
-```
